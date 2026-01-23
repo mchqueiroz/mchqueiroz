@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # Isto adiciona o botão de "Run workflow" manual
+  workflow_dispatch:  # Permite que você execute o workflow manualmente na aba Actions
   schedule:
     - cron: "0 4 * * *"
 jobs:
@@ -11,15 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # Atualizado de v2 para v4
         with:
           fetch-depth: 1
       - name: Get Python 3.8
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5  # Atualizado de v2 para v5
         with:
           python-version: '3.8'
       - name: Configure pip cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4  # Atualizado de v2 para v4 para corrigir o erro
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/cache/requirements.txt') }}
@@ -35,7 +35,7 @@ jobs:
         run: |-
           git add .
           git diff
-          git config --global user.email "github-actions-bot@andrew6rant.github.io"
-          git config --global user.name "Andrew6rant/GitHub-Actions-Bot"
+          git config --global user.email "github-actions-bot@github.com"
+          git config --global user.name "GitHub-Actions-Bot"
           git commit -m "Updated README" -a || echo "No changes to commit"
           git push
