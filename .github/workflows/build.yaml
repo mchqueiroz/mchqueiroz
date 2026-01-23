@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  # Isto adiciona o botão de "Run workflow" manual
   schedule:
     - cron: "0 4 * * *"
 jobs:
