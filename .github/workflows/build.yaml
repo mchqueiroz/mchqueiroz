@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v4  # Atualizado de v2 para v4
         with:
           fetch-depth: 1
-      - name: Get Python 3.8
+      - name: Get Python 3.12
         uses: actions/setup-python@v5  # Atualizado de v2 para v5
         with:
-          python-version: '3.8'
+          python-version: '3.12'
       - name: Configure pip cache
         uses: actions/cache@v4  # Atualizado de v2 para v4 para corrigir o erro
         with:
